@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Watchos</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="/static/home.css" th:href="@{/home.css}" />
+</head>
+<body>
+
+<div id="notes">
+
+    <h3>
+        Hello.
+        This is an organizer.
+    </h3>
+
+    <p th:text="${date}">Current date</p>
+
+  <h3>Wpisz nową notatkę:</h3>
+
+
+    <form method="post" th:object="${note}" th:action="@{/}">
+        <label>
+            <input type="text" name="content" th:field="*{content}">
+        </label>
+        <input type="submit" value="Submit"/>
+    </form>
+
+
+    <h3>Twoje notatki:</h3>
+    <div id="noteList">
+        </br>
+        <tr th:each="note: ${noteList}">
+            <td th:text="${note.content}" />
+            </br>
+            <td th:text="${note.creationDate}"/>
+            </br>
+        </tr>
+
+    </div>
+
+
+
+</div>
+
+
+</body>
+</html>
