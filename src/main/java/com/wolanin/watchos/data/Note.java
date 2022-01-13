@@ -1,25 +1,15 @@
-package com.wolanin.watchos;
+package com.wolanin.watchos.data;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
-
-//@Data
-//@RequiredArgsConstructor
-//@NoArgsConstructor(force = true)
 @Entity(name = "Note")
+@Table(name = "User")
 public class Note {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    public long id;
     private LocalDateTime creationDate;
     private String content;
 
@@ -46,5 +36,21 @@ public class Note {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    @ManyToOne
+    private User user;
+
+    public Note(LocalDateTime creationDate, String content, User user) {
+        this.creationDate = creationDate;
+        this.content = content;
+        this.user = user;
+    }
+
+    public void setUser(User user) {
+    }
+
+    public User getUser() {
+        return user;
     }
 }

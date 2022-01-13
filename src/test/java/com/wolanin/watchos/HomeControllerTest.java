@@ -1,5 +1,6 @@
 package com.wolanin.watchos;
 
+import com.wolanin.watchos.controller.HomeController;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.wolanin.watchos;
+package com.wolanin.watchos.form;
 
 import org.springframework.stereotype.Component;
 

@@ -1,11 +1,5 @@
 html {
-    background: rgb(2,0,36);
-    background: linear-gradient(360deg, rgba(2,0,36,1) 0%, rgba(63,9,121,1) 35%, rgba(157,0,255,1) 100%);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background-color: Azure;
 }
 
 #notes{
@@ -20,15 +14,40 @@ body{
 }
 
 h3{
-    color: white;
+    color: #381d28;
     font-weight: bold;
 }
 
 #noteList{
-    color: sandybrown;
+    color: #381d28;
     padding: 20px;
 }
 
 td{
     line-height: 1em;
+}
+
+div.form
+{
+    display: block;
+    text-align: center;
+}
+form
+{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 250px;
+    text-align: right;
+}
+input {
+    display: inline-block;
+    float: left;
 }

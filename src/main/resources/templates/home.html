@@ -20,7 +20,7 @@
   <h3>Wpisz nową notatkę:</h3>
 
 
-    <form method="post" th:object="${note}" th:action="@{/}">
+    <form method="post" th:object="${note}" th:action="@{/home}">
         <label>
             <input type="text" name="content" th:field="*{content}">
         </label>
@@ -30,12 +30,17 @@
 
     <h3>Twoje notatki:</h3>
     <div id="noteList">
-        </br>
+        <br>
         <tr th:each="note: ${noteList}">
-            <td th:text="${note.content}" />
-            </br>
-            <td th:text="${note.creationDate}"/>
-            </br>
+            <form method="post" th:object="${note}" th:action="@{/delete}" >
+            <td th:text="${note.content}"></td><br>
+                <td th:text="${note.creationDate}"></td><br>
+                <td th:text="${note.id}" th:field="SelectedNote" ></td> <br>
+                <input type="hidden" th:value="*{id}" name="id" />
+                <label>
+                    <input type="submit" value="usuń" />
+                </label>
+            </form>
         </tr>
 
     </div>
@@ -44,6 +49,9 @@
 
 </div>
 
+<form method="post" th:action="@{/logout}">
+    <input type="submit" value="Wyloguj się">
+</form>
 
 </body>
 </html>
