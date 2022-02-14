@@ -2,6 +2,7 @@ package com.wolanin.watchos.data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity(name = "Note")
 @Table(name = "User")
@@ -52,5 +53,16 @@ public class Note {
 
     public User getUser() {
         return user;
+    }
+
+    @OneToMany(cascade = {CascadeType.ALL})
+    private List<Tag> tagList;
+
+    public List<Tag> getTagList() {
+        return tagList;
+    }
+
+    public void setTagList(List<Tag> tagList) {
+        this.tagList = tagList;
     }
 }

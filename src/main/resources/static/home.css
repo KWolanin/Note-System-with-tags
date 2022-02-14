@@ -1,53 +1,210 @@
 html {
     background-color: Azure;
+    height: 100%;
+    width: 100%;
 }
 
-#notes{
-    height: 1000px;
-    width: 1000px;
-    padding: 20px;
+body {
+    padding: 40px;
+    margin: 10px;
+    /* height: 100%;
+    width: 100%; */
 }
 
-body{
-    padding: 0;
-    margin: 0;
-}
-
-h3{
+h3 {
     color: #381d28;
     font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
 }
 
-#noteList{
-    color: #381d28;
-    padding: 20px;
-}
-
-td{
+td {
     line-height: 1em;
 }
 
-div.form
-{
+div.form {
     display: block;
     text-align: center;
 }
-form
-{
+
+form {
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
-    text-align: left;
+    text-align: justify;
 }
 
-label{
+
+
+label {
     display: inline-block;
     float: left;
     clear: left;
-    width: 250px;
-    text-align: right;
+    width: 100%;
+    text-align: center;
 }
+
 input {
     display: inline-block;
     float: left;
+}
+
+input[type=text], input[type=password], input[type=email]{
+    border: 1px solid;
+    border-radius: 4px;
+    width: 100%;
+    height: 150%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+textarea{
+  border: 1px solid;
+}
+
+.noteContent{
+  text-align: justify;
+   inline-size: 150px;
+  overflow-wrap: break-word;
+}
+
+#newNoteField{
+    height: 150px;
+    overflow-wrap: break-word;
+    font-size: large;
+}
+
+.leftMenu {
+    float: left;
+    padding: 5px;
+    border: 2px solid #011c1c;
+    border-radius: 10px;
+    background-color: #050e66;;
+    color: white;
+    width: 10%;
+    height: 100%;
+
+}
+
+.rightContent {
+    float: left;
+    width: 75%;
+    height: 100%;
+    border-radius: 10px;
+    margin-left: 20px;
+}
+
+footer {
+    clear: left;
+}
+
+.singleNote {
+    border: 2px solid #011c1c;
+    background-color: #050e66;;
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    overflow-wrap: break-word;
+}
+
+a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+}
+
+.clock, .date {
+    font-weight: bold;
+    color: white;
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin-bottom: 15px;
+    margin-top: 5px;
+}
+
+.menuLinks {
+    font-weight: bold;
+    color: white;
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+    align-content: center;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#settingsLink {
+    display: inline-block;
+    color: white;
+    padding: 10px;
+}
+
+#registerButton, #loginButton, #loginButton2 {
+    border: none;
+    border-radius: 20px;
+    background: #011c1c;
+    color: azure;
+    font-weight: bold;
+    font-size: large;
+    text-align: center;
+    width: 100%;
+    margin-top: 5%;
+    padding: 5%;
+}
+
+#logoutButton{
+  border: none;
+  border-radius: 20px;
+  background: azure;
+  color: #011c1c;
+  font-weight: bold;
+  font-size: large;
+  padding: 5px;
+}
+
+.newNoteButtons{
+    padding: 15px;
+}
+
+#saveButton, #resetButton{
+    border: none;
+    border-radius: 20px;
+    background: #050e66;
+    color: white;
+    font-weight: bold;
+    font-size: large;
+    padding: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.tags{
+    color:darkgoldenrod;
+}
+
+#noteList{
+  display: inline;
+}
+
+#noteForm{
+  display:none;
+}
+
+.fa-broom:hover, .fa-plus-circle:hover{
+  color: darkgoldenrod;
+  font-size: 500%;
+}
+
+.error{
+  border-radius: 20px;
+  background-color: red;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  padding: 1%;
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
 }

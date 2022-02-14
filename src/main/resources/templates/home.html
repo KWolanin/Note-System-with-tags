@@ -1,57 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Watchos</title>
+    <title>NoteI</title>
     <link rel="stylesheet" type="text/css" media="all"
-          href="/static/home.css" th:href="@{/home.css}" />
+          href="/static/home.css" th:href="@{/home.css}"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" th:src="@{/scripts.js}" async></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.js" integrity="sha256-2JRzNxMJiS0aHOJjG+liqsEOuBb6++9cY4dSOyiijX4=" crossorigin="anonymous"></script>
+
+
 </head>
 <body>
 
-<div id="notes">
+<div class="leftMenu">
+    <div class="date" th:text="${date}">Current date</div>
+    <div class="clock" th:onload="currentTime()">Current time</div>
+    <div class="menuLinks">
+        <form method="post" th:action="@{/logout}">
+            <input type="submit" value="Wyloguj się" id="logoutButton">
+        </form>
+    </div>
+    <br>
 
-    <h3>
-        Hello.
-        This is an organizer.
-    </h3>
-
-    <p th:text="${date}">Current date</p>
-
-  <h3>Wpisz nową notatkę:</h3>
+</div>
+<div class="rightContent">
 
 
-    <form method="post" th:object="${note}" th:action="@{/home}">
+    <form method="post" th:object="${noteForm}" th:action="@{/home}" id="noteForm">
         <label>
-            <input type="text" name="content" th:field="*{content}">
-        </label>
-        <input type="submit" value="Submit"/>
+            <textarea form="noteForm" name="content" th:field="*{content}" id="newNoteField"></textarea>
+            tagi (oddzielone przecinkiem):
+            <input type="text" name="tags" id="tagField" th:field="*{tags}">
+        </label><br>
+            <input type="submit" value="Zapisz" id="saveButton"/>
+            <input type="reset" value="Wyczyść" id="resetButton"/>
     </form>
 
 
-    <h3>Twoje notatki:</h3>
     <div id="noteList">
         <br>
         <tr th:each="note: ${noteList}">
-            <form method="post" th:object="${note}" th:action="@{/delete}" >
-            <td th:text="${note.content}"></td><br>
-                <td th:text="${note.creationDate}"></td><br>
-                <td th:text="${note.id}" th:field="SelectedNote" ></td> <br>
-                <input type="hidden" th:value="*{id}" name="id" />
+            <form method="post" th:object="${note}" th:action="@{/delete}" class="singleNote">
+             <div class="noteContent">
+                 <td th:text="${note.content}" ></td>
+             </div>
+                <br>
+                <td th:text="${#strings.replace(note.creationDate, 'T', ' ').substring(0, 16)}"></td>
+                <br>
+                <input type="hidden" th:value="*{id}" name="id"/>
+                <input type="hidden" th:value="*{creationDate}" name="date">
                 <label>
-                    <input type="submit" value="usuń" />
+                    <input type="submit" value="usuń"/>
                 </label>
+                <br>
+                <td th:each="tag: ${note.tagList}">
+                <a href="#" th:text="'#' + ${tag.tagName}" class="tags" th:onclick="showThisTag(this)"></a>
+                </td>
             </form>
-        </tr>
 
+
+        </tr>
     </div>
 
+    <br>
 
+    <span class="controls">
+        <i class="fas fa-broom fa-3x" th:onclick="clearTags()" id="clearTagsButton"></i>
+      <i class="fas fa-plus-circle fa-3x" th:onclick="toggleForm()" id="toggleFormButton"></i>
+    </span>
 
 </div>
 
-<form method="post" th:action="@{/logout}">
-    <input type="submit" value="Wyloguj się">
-</form>
+<footer>
+    <p></p>
+</footer>
+
 
 </body>
 </html>

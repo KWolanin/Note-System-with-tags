@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>NoteI</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="/static/home.css" th:href="@{/home.css}" />
+</head>
+<body>
+
+<div th:if="${param.error}" class="error">Dane niepoprawne.</div>
+
+<div class="form">
+    <p>Jesteś nowy? Kliknij <a th:href="@{/register}">tutaj</a>, aby się zarejestrować</p>
+
+    <form method="post" th:action="@{/login}" id="loginForm">
+
+        <label for="username">Nazwa użytkownika:</label>
+        <input type="text" name="username" id="username"><br/>
+
+        <label for="password">Hasło:</label>
+        <input type="password" name="password" id="password"><br/>
+
+        <input type="submit" value="Zaloguj się" id="loginButton">
+    </form>
+
+</div>
+
+
+
+</body>
+</html>

@@ -28,7 +28,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(encoder());
-
     }
 
     @Override
@@ -40,7 +39,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().formLogin().loginPage("/login").defaultSuccessUrl("/home")
                 .and().logout().logoutSuccessUrl("/");
     }
-
 
 
 }

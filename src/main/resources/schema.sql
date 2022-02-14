@@ -21,8 +21,21 @@ create table if not exists Note_User
     user int not null
 );
 
+create table if not exists Tag(
+  id int not null ,
+  tagname varchar(10) not null,
+  primary key (id)
+);
+
+create table if not exists Tag_Note(
+  tag int not null ,
+  note int not null
+);
+
 alter table Note_User add foreign key (note) references Note(id);
 alter table Note_User add foreign key (user) references User(id);
+alter table Tag_Note add foreign key (tag) references Tag(id);
+alter table Tag_Note add foreign key (note) references Note(id);
 
 
 
